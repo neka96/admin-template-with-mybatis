@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{user_list}">User List</title>
+</head>
+<body>
+
+	<div layout:fragment="content" class="page-inner">
+		<div class="page-inner" style="min-height: 789px !important">
+			<div class="page-title">
+				<h3 class="breadcrumb-header" th:text="#{user_list}">User List</h3>
+				<div class="page-breadcrumb">
+					<ol class="breadcrumb breadcrumb-with-header">
+						<li><a th:href="@{/dashboard}" th:text="#{home}">Home</a></li>
+						<li class="active" th:text="#{user_list}">User List</li>
+					</ol>
+				</div>
+			</div>
+			<div id="main-wrapper">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-white">
+							<div class="panel-body">
+								<div class="table-responsive">
+									<div id="example_wrapper" class="dataTables_wrapper">
+										<div id="example_filter" class="dataTables_filter">
+											<label style="float: right"><span th:text="#{search}">Search:</span> <input type="search" class=""
+												placeholder="" aria-controls="example"></label>
+										</div>
+										<div class="dataTables_length" id="example_length">
+											<label><span th:text="#{show}">Show</span> <select name="example_length"
+												aria-controls="example" class=""><option value="10">10</option>
+													<option value="25">25</option>
+													<option value="50">50</option>
+													<option value="100">100</option></select> <span th:text="entries">entries</span>
+											</label>
+										</div>
+		
+										<table id="example" class="display table dataTable"
+											style="width: 100%;" role="grid"
+											aria-describedby="example_info">
+											<thead>
+												<tr role="row">
+													<th class="sorting_asc" tabindex="0"
+														aria-controls="example" rowspan="1" colspan="1"
+														aria-sort="ascending"
+														aria-label="Name: activate to sort column descending"
+														style="width: 291px;" th:text="#{name}">Name</th>
+													<th class="sorting" tabindex="0" aria-controls="example"
+														rowspan="1" colspan="1"
+														aria-label="Position: activate to sort column ascending"
+														style="width: 426px;" th:text="#{position}">Position</th>
+													<th class="sorting" tabindex="0" aria-controls="example"
+														rowspan="1" colspan="1"
+														aria-label="Office: activate to sort column ascending"
+														style="width: 233px;" th:text="#{office}">Office</th>
+													<th class="sorting" tabindex="0" aria-controls="example"
+														rowspan="1" colspan="1"
+														aria-label="Age: activate to sort column ascending"
+														style="width: 99px;" th:text="#{age}">Age</th>
+													<th class="sorting" tabindex="0" aria-controls="example"
+														rowspan="1" colspan="1"
+														aria-label="Start date: activate to sort column ascending"
+														style="width: 194px;" th:text="#{start_date}">Start date</th>
+													<th class="sorting" tabindex="0" aria-controls="example"
+														rowspan="1" colspan="1"
+														aria-label="Salary: activate to sort column ascending"
+														style="width: 194px;" th:text="#{salary}">Salary</th>
+													<th class="sorting" tabindex="0" aria-controls="example"
+														rowspan="1" colspan="1"
+														aria-label="Salary: activate to sort column ascending"
+														style="width: 194px;" th:text="#{salary}">Salary</th>
+													<th class="sorting" tabindex="0" aria-controls="example"
+														rowspan="1" colspan="1"
+														aria-label="Salary: activate to sort column ascending"
+														style="width: 194px;">Command</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr role="row" th:each="u : ${USER}">
+													<td th:text="${u.id}"></td>
+													<td th:text="${u.username}"></td>
+													<td th:text="${u.gender}"></td>
+													<td th:text="${u.age}"></td>
+													<td th:text="${u.position}"></td>
+													<td th:text="${u.startWork}"></td>
+													<td th:text="${u.salary}"></td>
+													<td>
+														<a th:href="@{/delete-user/{userHash}(userHash=${u.userHash})}">Delete</a>
+														<a th:href="@{/update-form/{userHash}(userHash=${u.userHash})}">Update</a>
+														<a href="">Detail</a>
+													</td>
+												</tr>
+												
+											</tbody>
+										</table>
+										<div class="dataTables_info" id="example_info" role="status"
+											aria-live="polite">Showing 1 to 10 of 57 entries</div>
+										<div class="dataTables_paginate paging_simple_numbers"
+											id="example_paginate">
+											<a class="paginate_button previous disabled"
+												aria-controls="example" data-dt-idx="0" tabindex="0"
+												id="example_previous">Previous</a><span><a
+												class="paginate_button current" aria-controls="example"
+												data-dt-idx="1" tabindex="0">1</a><a
+												class="paginate_button " aria-controls="example"
+												data-dt-idx="2" tabindex="0">2</a><a
+												class="paginate_button " aria-controls="example"
+												data-dt-idx="3" tabindex="0">3</a><a
+												class="paginate_button " aria-controls="example"
+												data-dt-idx="4" tabindex="0">4</a><a
+												class="paginate_button " aria-controls="example"
+												data-dt-idx="5" tabindex="0">5</a><a
+												class="paginate_button " aria-controls="example"
+												data-dt-idx="6" tabindex="0">6</a></span><a
+												class="paginate_button next" aria-controls="example"
+												data-dt-idx="7" tabindex="0" id="example_next">Next</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Row -->
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
